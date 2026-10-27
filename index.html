@@ -53,6 +53,54 @@
             font-weight: 600;
         }
 
+        /* タブナビゲーション */
+        .nav-tabs {
+            background-color: #ffffff;
+            border-bottom: 2px solid #e8f5e9;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            position: sticky;
+            top: 61px;
+            z-index: 99;
+        }
+
+        .tab-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            list-style: none;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tab-item {
+            flex: 1;
+            text-align: center;
+            min-width: 180px;
+        }
+
+        .tab-link {
+            display: block;
+            padding: 14px 16px;
+            text-decoration: none;
+            color: #2e7d32;
+            font-weight: bold;
+            font-size: 0.95rem;
+            border-bottom: 3px solid transparent;
+            transition: all 0.25s ease;
+        }
+
+        .tab-link:hover {
+            background-color: #f1f8e9;
+            color: #1b5e20;
+        }
+
+        .tab-link.active {
+            color: #1b5e20;
+            border-bottom-color: #4caf50;
+            background-color: rgba(232, 245, 233, 0.5);
+        }
+
         /* ヒーローセクション（メインビジュアル） */
         .hero {
             position: relative;
@@ -131,6 +179,12 @@
             gap: 25px;
         }
 
+        .card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
         .card {
             background: #ffffff;
             padding: 32px 25px;
@@ -138,11 +192,13 @@
             border: 1px solid #e8f5e9;
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
             transition: all 0.3s ease;
+            height: 100%;
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.1);
+            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.15);
+            border-color: #a5d6a7;
         }
 
         .card-num {
@@ -224,6 +280,9 @@
             .hero-content {
                 padding: 30px 20px;
             }
+            .nav-tabs {
+                top: 53px;
+            }
         }
     </style>
 </head>
@@ -231,9 +290,24 @@
 
     <!-- ヘッダー -->
     <header>
-        <a href="#" class="logo">PoteRis<span>Support</span></a>
+        <a href="index.html" class="logo">PoteRis<span>Support</span></a>
         <span class="status-tag">準備中（2026年 開業予定）</span>
     </header>
+
+    <!-- ナビゲーションタブ -->
+    <nav class="nav-tabs">
+        <ul class="tab-container">
+            <li class="tab-item">
+                <a href="data-management.html" class="tab-link">データ管理相談</a>
+            </li>
+            <li class="tab-item">
+                <a href="excel-lesson.html" class="tab-link">Excel相談・レッスン</a>
+            </li>
+            <li class="tab-item">
+                <a href="automation-powershell.html" class="tab-link">自動化・プログラム作成(PowerShell)</a>
+            </li>
+        </ul>
+    </nav>
 
     <!-- ヒーローセクション（メイン） -->
     <section class="hero">
@@ -252,21 +326,27 @@
         <h2 class="section-title">SERVICE</h2>
         <p class="section-sub">PoteRisSupport がお手伝いできること</p>
         <div class="grid">
-            <div class="card">
-                <div class="card-num">01 / DATA MANAGEMENT</div>
-                <h3>データ整理・管理のご提案</h3>
-                <p>日常生活の雑務からお仕事の重要データまで、お客様それぞれの環境に寄り添い、整理整頓や効率的な保管ルールをご提案いたします。</p>
-            </div>
-            <div class="card">
-                <div class="card-num">02 / EXCEL GUIDANCE</div>
-                <h3>Excel・データ活用指南</h3>
-                <p>「もっと楽に集計したい」「計算ミスを減らしたい」など、日々の現場でそのまま役立つExcelテクニックや効率化のノウハウを丁寧にアドバイスします。</p>
-            </div>
-            <div class="card">
-                <div class="card-num">03 / AUTOMATION PROGRAM</div>
-                <h3>業務自動化プログラム作成</h3>
-                <p>繰り返しの転記作業や複雑なデータ処理をワンクリックで完結させるオリジナルプログラム（VBA・Python等）を作成・サポートいたします。</p>
-            </div>
+            <a href="data-management.html" class="card-link">
+                <div class="card">
+                    <div class="card-num">01 / DATA MANAGEMENT</div>
+                    <h3>データ整理・管理のご提案</h3>
+                    <p>日常生活の雑務からお仕事の重要データまで、お客様それぞれの環境に寄り添い、整理整頓や効率的な保管ルールをご提案いたします。</p>
+                </div>
+            </a>
+            <a href="excel-lesson.html" class="card-link">
+                <div class="card">
+                    <div class="card-num">02 / EXCEL GUIDANCE</div>
+                    <h3>Excel・データ活用指南</h3>
+                    <p>「もっと楽に集計したい」「計算ミスを減らしたい」など、日々の現場でそのまま役立つExcelテクニックや効率化のノウハウを丁寧にアドバイスします。</p>
+                </div>
+            </a>
+            <a href="automation-powershell.html" class="card-link">
+                <div class="card">
+                    <div class="card-num">03 / AUTOMATION PROGRAM</div>
+                    <h3>業務自動化プログラム作成</h3>
+                    <p>繰り返しの転記作業や複雑なデータ処理をワンクリックで完結させるオリジナルプログラム（VBA・Python等）を作成・サポートいたします。</p>
+                </div>
+            </a>
         </div>
     </section>
 
