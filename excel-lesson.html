@@ -5,30 +5,274 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Excel相談・レッスン | PoteRisSupport</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif; color: #333; line-height: 1.8; background-color: #fffdfb; }
-        header { background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #ffe0b2; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: 800; color: #e65100; text-decoration: none; letter-spacing: 0.05em; }
-        .logo span { color: #f57c00; }
-        .status-tag { font-size: 0.85rem; background: #fff3e0; color: #e65100; padding: 4px 12px; border-radius: 12px; font-weight: 600; }
-        .nav-tabs { background-color: #ffffff; border-bottom: 2px solid #ffe0b2; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03); position: sticky; top: 61px; z-index: 99; }
-        .tab-container { max-width: 1000px; margin: 0 auto; display: flex; list-style: none; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
-        .tab-item { flex: 1; text-align: center; min-width: 180px; }
-        .tab-link { display: block; padding: 14px 16px; text-decoration: none; color: #e65100; font-weight: bold; font-size: 0.95rem; border-bottom: 3px solid transparent; transition: all 0.25s ease; }
-        .tab-link:hover { background-color: #fff8e1; color: #bf360c; }
-        .tab-link.active { color: #e65100; border-bottom-color: #f57c00; background-color: rgba(255, 243, 205, 0.5); }
-        .main-content { max-width: 960px; margin: 70px auto; padding: 0 20px; text-align: center; min-height: 50vh; }
-        .section-title { font-size: 2rem; color: #e65100; margin-bottom: 20px; font-weight: 700; }
-        .content-box { background: #ffffff; padding: 60px 30px; border-radius: 12px; border: 1px solid #ffe0b2; box-shadow: 0 4px 15px rgba(0,0,0,0.03); font-size: 1.1rem; color: #666; }
-        footer { text-align: center; padding: 25px; font-size: 0.85rem; color: #777; background-color: #ffffff; border-top: 1px solid #f0f0f0; margin-top: 80px; }
-        @media (max-width: 600px) { header { padding: 12px 20px; } .nav-tabs { top: 53px; } }
+        /* p0, p1, p2と完全に一致させた基本スタイル */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            color: #333;
+            line-height: 1.8;
+            background-color: #fcfdfc;
+        }
+
+        /* ヘッダー / ナビゲーション（各ページと同一構造） */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #e8f5e9;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1b5e20;
+            text-decoration: none;
+            letter-spacing: 0.05em;
+        }
+
+        .logo span {
+            color: #4caf50;
+        }
+
+        .status-tag {
+            font-size: 0.85rem;
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        /* タブナビゲーション */
+        .nav-tabs {
+            background-color: #ffffff;
+            border-bottom: 2px solid #e8f5e9;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            position: sticky;
+            top: 61px;
+            z-index: 99;
+        }
+
+        .tab-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            list-style: none;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tab-item {
+            flex: 1;
+            text-align: center;
+            min-width: 180px;
+        }
+
+        .tab-link {
+            display: block;
+            padding: 14px 16px;
+            text-decoration: none;
+            color: #2e7d32;
+            font-weight: bold;
+            font-size: 0.95rem;
+            border-bottom: 3px solid transparent;
+            transition: all 0.25s ease;
+        }
+
+        .tab-link:hover {
+            background-color: #f1f8e9;
+            color: #1b5e20;
+        }
+
+        .tab-link.active {
+            color: #1b5e20;
+            border-bottom-color: #4caf50;
+            background-color: rgba(232, 245, 233, 0.5);
+        }
+
+        /* メインコンテンツエリア */
+        .main-content {
+            max-width: 960px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        /* ページ見出し・メッセージ部分 */
+        .page-header-box {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #1b5e20;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .hero-text-sub {
+            font-size: 1rem;
+            color: #444;
+            background: rgba(232, 245, 233, 0.4);
+            padding: 20px 25px;
+            border-radius: 8px;
+            border-left: 4px solid #4caf50;
+            text-align: left;
+            line-height: 1.8;
+        }
+
+        /* コンテンツのグリッド配置（ご相談例と料金目安を並列化） */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .content-block {
+            background: #ffffff;
+            padding: 30px 25px;
+            border-radius: 12px;
+            border: 1px solid #e8f5e9;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .content-block h2 {
+            font-size: 1.2rem;
+            color: #1b5e20;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e8f5e9;
+        }
+
+        /* ご相談例リスト */
+        .example-list {
+            list-style: none;
+        }
+
+        .example-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 12px;
+            font-size: 0.92rem;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        .example-list li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            color: #4caf50;
+        }
+
+        /* 料金表 */
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 5px;
+        }
+
+        .price-table th, .price-table td {
+            padding: 10px 8px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9rem;
+        }
+
+        .price-table th {
+            color: #1b5e20;
+            font-weight: 700;
+            width: 45%;
+        }
+
+        .price-table td {
+            color: #444;
+        }
+
+        /* 事前相談・問い合わせ */
+        .contact {
+            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+            text-align: center;
+            padding: 50px 20px;
+            margin-top: 50px;
+            border-top: 1px solid #c8e6c9;
+            border-bottom: 1px solid #c8e6c9;
+        }
+
+        .contact h2 {
+            font-size: 1.4rem;
+            color: #1b5e20;
+            margin-bottom: 12px;
+        }
+
+        .contact p {
+            font-size: 0.95rem;
+            color: #444;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #2e7d32;
+            color: #ffffff;
+            padding: 14px 36px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #1b5e20;
+            box-shadow: 0 6px 18px rgba(46, 125, 50, 0.3);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            font-size: 0.85rem;
+            color: #777;
+            background-color: #ffffff;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 12px 20px;
+            }
+            .nav-tabs {
+                top: 53px;
+            }
+        }
     </style>
 </head>
 <body>
+
+    <!-- ヘッダー -->
     <header>
         <a href="index.html" class="logo">PoteRis<span>Support</span></a>
         <span class="status-tag">準備中（2026年 開業予定）</span>
     </header>
+
+    <!-- ナビゲーションタブ -->
     <nav class="nav-tabs">
         <ul class="tab-container">
             <li class="tab-item"><a href="data-management.html" class="tab-link">データ管理相談</a></li>
@@ -36,14 +280,68 @@
             <li class="tab-item"><a href="automation-powershell.html" class="tab-link">自動化・プログラム作成(PowerShell)</a></li>
         </ul>
     </nav>
+
+    <!-- メインコンテンツ -->
     <main class="main-content">
-        <h1 class="section-title">Excel相談・レッスン</h1>
-        <div class="content-box">
-            <p>作成中</p>
+        <!-- ページヘッダー ＆ サービス紹介文 -->
+        <div class="page-header-box">
+            <h1 class="section-title">Excel相談・レッスン</h1>
+            <div class="hero-text-sub">
+                <p>「もっと楽に集計したい」「計算ミスや転記ミスを減らしたい」など、日々の現場でそのまま役立つExcelテクニックや効率化のノウハウを丁寧にアドバイス・レッスンいたします。</p>
+                <p style="margin-top: 10px;">複雑な数式や関数、見やすい表のレイアウト設計から、実務に合わせたシートの作成代行まで、お客様の環境に合わせてサポートします。</p>
+            </div>
+        </div>
+
+        <!-- 主なご相談例 と 料金目安 を並列配置 -->
+        <div class="grid-layout">
+            <!-- ご相談内容例 -->
+            <section class="content-block">
+                <div>
+                    <h2>主なご相談・レッスン例</h2>
+                    <ul class="example-list">
+                        <li><strong>関数・集計の効率化：</strong> VLOOKUP、XLOOKUP、ピボットテーブルなどを活用したミスのないデータ集計。</li>
+                        <li><strong>シートのレイアウト改善：</strong> 人が見やすく扱いやすい、属人化しないフォーマット設計。</li>
+                        <li><strong>実務直結レッスン：</strong> お手元の実際のファイルを使った個別指導・疑問点の解消。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 料金目安 -->
+            <section class="content-block">
+                <div>
+                    <h2>料金目安</h2>
+                    <table class="price-table">
+                        <tr>
+                            <th>初回相談 (30分)</th>
+                            <td>無料（オンライン）</td>
+                        </tr>
+                        <tr>
+                            <th>個別レッスン / 相談</th>
+                            <td>5,000円〜 / 1時間</td>
+                        </tr>
+                        <tr>
+                            <th>Excelシート作成代行</th>
+                            <td>15,000円〜（要件に応じてお見積り）</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
         </div>
     </main>
+
+    <!-- 事前相談・問い合わせ（Googleフォーム遷移想定） -->
+    <section class="contact">
+        <h2>Excelに関する事前のご相談・お問い合わせ</h2>
+        <p>現在準備期間中のため、個別のご要望やExcelレッスンに関するご相談を先行して承っております。</p>
+        <!-- 将来的に Google Forms などにパラメータ付きで遷移する想定 (例: ?entry.xxx=excel-lesson) -->
+        <a href="mailto:your-email@example.com?subject=【PoteRisSupport】Excel相談・レッスンについてのお問い合わせ" class="btn">
+            この内容について問い合わせる
+        </a>
+    </section>
+
     <footer>
         <p>&copy; 2026 PoteRisSupport. All Rights Reserved.</p>
     </footer>
+
 </body>
 </html>
